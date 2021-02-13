@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
+#  get 'users/index'
+#  get 'users/show'
+#  get 'users/new'
+#  get 'users/create'
     root to: 'tasks#index'
     
-    resources :tasks
+    get 'signup', to: 'users#new'
+    resources :users, only: [:index, :show, :new, :create]
+    resources :tasks, only: [:create, :destroy]  
     # get 'tasks/:id', to: 'tasks#show'
     # post 'tasks', to: 'tasks#create'
     # put 'tasks/:id', to: 'tasks#update'
