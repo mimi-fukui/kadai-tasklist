@@ -1,10 +1,13 @@
-<h1>タスク一覧</h1>
-<%= link_to 'Sign up now!', signup_path, class: 'btn btn-lg btn-primary' %>
-<% if false %>
+<% if logged_in? %>
+    <p>ログイン完了ユーザ：<%=current_user.name %></p>
+    <h1>タスク一覧</h1>
     <ul>
         <% @tasks.each do |task| %>
             <li><%= link_to task.id, task %> : <%= task.content %> &gt; <%= task.status %></li>
         <% end %>
     </ul>
-    
+
+<% else %>
+    <h1>タスクリストへようこそ</h1>
+    <%= link_to 'Sign up now!', signup_path, class: 'btn btn-lg btn-primary' %>
 <% end %>
