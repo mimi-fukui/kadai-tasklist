@@ -3,18 +3,8 @@ class TasksController < ApplicationController
     before_action :correct_user, only: [:destroy, :edit, :update, :show]
     
     def index
-    #    if logged_in?
-            @task = current_user.tasks.build #form_with用
-            @tasks = current_user.tasks.order(id: :desc).page(params[:page])
-    #    end
-    end
-    
-    def show
-       #@task = Task.find(params[:id])
-    end
-    
-    def new
-        @task = Task.new
+        @task = current_user.tasks.build #form_with用
+        @tasks = current_user.tasks.order(id: :desc).page(params[:page])
     end
     
     def create
@@ -31,15 +21,14 @@ class TasksController < ApplicationController
     end
     
     def edit
-        #@task = Task.find(params[:id])
     end
     
     def update
-        #@task = Task.find(params[:id])
         
         if @task.update(task_params)
             flash[:success] = 'Taskは正常に更新されました'
-            redirect_to @task
+            #redirect_to @task
+            redirect_to root_url
         else
             flash.now[:danger] = 'Taskは更新されませんでした'
             render :edit
