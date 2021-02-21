@@ -6,10 +6,10 @@
                     <p><%= task.user.name %>
                 </div>
                 <div>
-                    <p><%= task.content %> (<%= task.status %>)</p>
+                    <p><%= link_to task.id, task %> を編集する</p>
                 </div>
                 <div>
-                    <%= link_to "Edit", edit_task_path(task.id) %>
+                    <p><%= task.content %> (<%= task.status %>)</p>
                 </div>
                 <div>
                     <% if current_user == task.user %>
